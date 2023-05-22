@@ -30,5 +30,11 @@ namespace ChatGPTPrompt
                 string.Format(System.Globalization.CultureInfo.CurrentUICulture, "Invoked '{0}'", this.ToString()),
                 "PromptSelectionToolWindow");
         }
+
+        private async void sendRequestButton_Click(object sender, RoutedEventArgs e)
+        {
+            var response = await new OpenAIQuery().GetOpenAIResponseAsync(codeToTestTextBox.Text);
+            resultTextBox.Text = response;
+        }
     }
 }

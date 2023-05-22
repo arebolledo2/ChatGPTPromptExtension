@@ -46,6 +46,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Commands\PopulateCodeToTestCommand.cs" />
+    <Compile Include="Integrations\OpenAIIntegration.cs" />
     <Compile Include="PromptSelectionToolWindow.cs" />
     <Compile Include="PromptSelectionToolWindowCommand.cs" />
     <Compile Include="PromptSelectionToolWindowControl.xaml.cs">
