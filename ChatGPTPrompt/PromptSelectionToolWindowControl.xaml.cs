@@ -33,8 +33,16 @@ namespace ChatGPTPrompt
 
         private async void sendRequestButton_Click(object sender, RoutedEventArgs e)
         {
-            var response = await new OpenAIQuery().GetOpenAIResponseAsync(codeToTestTextBox.Text);
-            resultTextBox.Text = response;
+            try
+            {
+                IsEnabled = false;
+                var response = await new OpenAIQuery().GetOpenAIResponseAsync(codeToTestTextBox.Text);
+                resultTextBox.Text = response;
+            }
+            finally
+            {
+                IsEnabled = true;
+            }
         }
     }
 }

@@ -50,6 +50,7 @@ namespace ChatGPTPrompt
             await this.JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
             await PromptSelectionToolWindowCommand.InitializeAsync(this);
             await ChatGPTPrompt.Commands.PopulateCodeToTestCommand.InitializeAsync(this);
+            await ChatGPTPrompt.Commands.AddToRelevantClassesCommand.InitializeAsync(this);
         }
 
         #endregion

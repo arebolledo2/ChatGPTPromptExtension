@@ -45,6 +45,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Commands\AddToRelevantClassesCommand.cs" />
     <Compile Include="Commands\PopulateCodeToTestCommand.cs" />
     <Compile Include="Integrations\OpenAIIntegration.cs" />
     <Compile Include="PromptSelectionToolWindow.cs" />
@@ -54,6 +55,8 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ChatGPTPromptPackage.cs" />
+    <Compile Include="Templates\ITemplate.cs" />
+    <Compile Include="Templates\UnitTestTemplate.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="source.extension.vsixmanifest">
@@ -84,6 +87,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Commands\Resources\AddToRelevantClassesCommand.png" />
     <Content Include="Commands\Resources\PopulateCodeToTestCommand.png" />
     <VSCTCompile Include="ChatGPTPromptPackage.vsct">
       <ResourceName>Menus.ctmenu</ResourceName>

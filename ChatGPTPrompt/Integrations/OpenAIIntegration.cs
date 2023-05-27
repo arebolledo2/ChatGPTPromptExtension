@@ -23,7 +23,7 @@ public class OpenAIQuery
 
         string jsonString = JsonConvert.SerializeObject(body);
 
-        using (var request = new HttpRequestMessage(HttpMethod.Post, "https://api.openai.com/v1/chat/completions"))
+        using (var request = new HttpRequestMessage(HttpMethod.Post, uri))
         {
             request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", apiKey);
 

@@ -4,28 +4,40 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:vsshell="clr-namespace:Microsoft.VisualStudio.Shell;assembly=Microsoft.VisualStudio.Shell.15.0"
+             xmlns:env="clr-namespace:Microsoft.VisualStudio.PlatformUI;assembly=Microsoft.VisualStudio.Shell.15.0"
              Background="{DynamicResource {x:Static vsshell:VsBrushes.WindowKey}}"
-             Foreground="{DynamicResource {x:Static vsshell:VsBrushes.WindowTextKey}}"
+             Foreground="{DynamicResource {x:Static env:EnvironmentColors.ToolWindowTextBrushKey}}"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="500"
              d:Background="Wheat"
              Name="MyToolWindow">
+
+    <UserControl.Resources>
+        <Style TargetType="{x:Type RadioButton}">
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static env:EnvironmentColors.ToolWindowTextBrushKey}}" />
+        </Style>
+        <Style TargetType="{x:Type Label}">
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static env:EnvironmentColors.ToolWindowTextBrushKey}}" />
+        </Style>
+        <Style TargetType="{x:Type TextBox}">
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static env:EnvironmentColors.ToolWindowTextBrushKey}}" />
+            <Setter Property="Background" Value="{DynamicResource {x:Static env:EnvironmentColors.ToolWindowBackgroundBrushKey}}" />
+        </Style>
+    </UserControl.Resources>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" MinHeight="100" />
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" MinHeight="100"/>
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" MinHeight="30"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" MinHeight="100"/>
         </Grid.RowDefinitions>
-
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-
         <!-- Toggle for sample/existing class -->
         <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal">
             <Label Content="Test Class Type:" />
@@ -46,10 +58,10 @@
         <ListBox x:Name="relevantClassesListBox" Grid.Row="6" Grid.Column="0" />
 
         <!-- Send request button -->
-        <Button x:Name="sendRequestButton" Content="Send Request" Grid.Row="0" Grid.Column="1" Click="sendRequestButton_Click" />
+        <Button x:Name="sendRequestButton" Content="Send Request" Grid.Row="7" Grid.Column="1" Click="sendRequestButton_Click" />
 
         <!-- Result display area -->
-        <Label Content="Result:" Grid.Row="1" Grid.Column="1" />
-        <TextBox x:Name="resultTextBox" Grid.Row="2" Grid.Column="1" Grid.RowSpan="5" AcceptsReturn="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" />
+        <Label Content="Result:" Grid.Row="8" Grid.Column="1" />
+        <TextBox x:Name="resultTextBox" Grid.Row="9" Grid.Column="1" Grid.RowSpan="5" AcceptsReturn="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" />
     </Grid>
 </UserControl>
