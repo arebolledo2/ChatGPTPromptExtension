@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:vsshell="clr-namespace:Microsoft.VisualStudio.Shell;assembly=Microsoft.VisualStudio.Shell.15.0"
              xmlns:env="clr-namespace:Microsoft.VisualStudio.PlatformUI;assembly=Microsoft.VisualStudio.Shell.15.0"
+             xmlns:converters="clr-namespace:ChatGPTPrompt.Converters"
              Background="{DynamicResource {x:Static vsshell:VsBrushes.WindowKey}}"
              Foreground="{DynamicResource {x:Static env:EnvironmentColors.ToolWindowTextBrushKey}}"
              mc:Ignorable="d"
@@ -23,6 +24,7 @@
             <Setter Property="Foreground" Value="{DynamicResource {x:Static env:EnvironmentColors.ToolWindowTextBrushKey}}" />
             <Setter Property="Background" Value="{DynamicResource {x:Static env:EnvironmentColors.ToolWindowBackgroundBrushKey}}" />
         </Style>
+        <converters:NullToBoolConverter x:Key="NullToBoolConverter" />
     </UserControl.Resources>
 
     <Grid>
@@ -38,23 +40,33 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" MinHeight="100"/>
         </Grid.RowDefinitions>
-        <!-- Toggle for sample/existing class -->
+        
         <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal">
-            <Label Content="Test Class Type:" />
-            <RadioButton x:Name="sampleClassRadioButton" Content="Sample Test Class" IsChecked="True" />
-            <RadioButton x:Name="existingClassRadioButton" Content="Existing Test Class" />
+            <Label Content="Template:" />
+            <ComboBox x:Name="templateComboBox"
+                      MinWidth="100"
+                      ItemsSource="{Binding Templates}"
+                      DisplayMemberPath="Name"
+                      SelectedItem="{Binding SelectedTemplate, Mode=TwoWay}" SelectionChanged="templateComboBox_SelectionChanged"
+                      IsSynchronizedWithCurrentItem="True">
+            </ComboBox>
         </StackPanel>
 
         <!-- Code to test area -->
-        <Label Content="Code to test:" Grid.Row="1" Grid.Column="0" />
-        <TextBox x:Name="codeToTestTextBox" Grid.Row="2" Grid.Column="0" AcceptsReturn="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" />
-
+        <Label Content="Prompt:" Grid.Row="1" Grid.Column="0" />
+        <TextBox x:Name="txtPrompt" 
+                 Grid.Row="2" 
+                 Grid.Column="0" 
+                 AcceptsReturn="True" 
+                 TextWrapping="Wrap" 
+                 VerticalScrollBarVisibility="Auto" 
+                 HorizontalScrollBarVisibility="Auto" />
         <!-- Sample or existing test class area -->
-        <Label Content="Sample/Existing test class:" Grid.Row="3" Grid.Column="0" />
+        <Label Content="Code:" Grid.Row="3" Grid.Column="0" />
         <TextBox x:Name="testClassTextBox" Grid.Row="4" Grid.Column="0" AcceptsReturn="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" />
 
         <!-- Relevant classes list -->
-        <Label Content="Relevant Classes:" Grid.Row="5" Grid.Column="0" />
+        <Label Content="Related:" Grid.Row="5" Grid.Column="0" />
         <ListBox x:Name="relevantClassesListBox" Grid.Row="6" Grid.Column="0" />
 
         <!-- Send request button -->

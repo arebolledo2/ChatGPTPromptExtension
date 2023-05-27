@@ -113,7 +113,7 @@ namespace ChatGPTPrompt.Commands
             if (window?.Content is PromptSelectionToolWindowControl control)
             {
                 // If it was, set the text of the codeToTestTextBox.
-                control.codeToTestTextBox.Text = selectedText.Text;
+                control.txtPrompt.Text += "\n\n" + selectedText.Text;
             }
         }
     }

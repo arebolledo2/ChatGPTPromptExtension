@@ -1,4 +1,5 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using ChatGPTPrompt.Templates;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -15,33 +16,39 @@ namespace ChatGPTPrompt
         public PromptSelectionToolWindowControl()
         {
             this.InitializeComponent();
+            this.DataContext = this; // If the properties are in code-behind
+            Templates.Add(null);
+            Templates.Add(new UnitTestTemplate());
         }
 
-        /// <summary>
-        /// Handles click on the button by displaying a message box.
-        /// </summary>
-        /// <param name="sender">The event sender.</param>
-        /// <param name="e">The event args.</param>
-        [SuppressMessage("Microsoft.Globalization", "CA1300:SpecifyMessageBoxOptions", Justification = "Sample code")]
-        [SuppressMessage("StyleCop.CSharp.NamingRules", "SA1300:ElementMustBeginWithUpperCaseLetter", Justification = "Default event handler naming pattern")]
-        private void button1_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show(
-                string.Format(System.Globalization.CultureInfo.CurrentUICulture, "Invoked '{0}'", this.ToString()),
-                "PromptSelectionToolWindow");
-        }
+        public ObservableCollection<ITemplate> Templates { get; } = new ObservableCollection<ITemplate>();
+        public ITemplate SelectedTemplate { get; set; }
 
         private async void sendRequestButton_Click(object sender, RoutedEventArgs e)
         {
             try
             {
                 IsEnabled = false;
-                var response = await new OpenAIQuery().GetOpenAIResponseAsync(codeToTestTextBox.Text);
+                var response = await new OpenAIQuery().GetOpenAIResponseAsync(txtPrompt.Text);
                 resultTextBox.Text = response;
             }
             finally
             {
                 IsEnabled = true;
+            }
+        }
+
+        private void templateComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (SelectedTemplate == null)
+            {
+                txtPrompt.IsEnabled = true;
+                txtPrompt.Text = string.Empty;
+            }
+            else
+            {
+                txtPrompt.IsEnabled = false;
+                txtPrompt.Text = SelectedTemplate.Prompt;
             }
         }
     }

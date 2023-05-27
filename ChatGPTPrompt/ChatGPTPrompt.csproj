@@ -47,7 +47,9 @@
   <ItemGroup>
     <Compile Include="Commands\AddToRelevantClassesCommand.cs" />
     <Compile Include="Commands\PopulateCodeToTestCommand.cs" />
+    <Compile Include="Converters\NullToBoolConverter.cs" />
     <Compile Include="Integrations\OpenAIIntegration.cs" />
+    <Compile Include="Parsing\SelectedFileParser.cs" />
     <Compile Include="PromptSelectionToolWindow.cs" />
     <Compile Include="PromptSelectionToolWindowCommand.cs" />
     <Compile Include="PromptSelectionToolWindowControl.xaml.cs">

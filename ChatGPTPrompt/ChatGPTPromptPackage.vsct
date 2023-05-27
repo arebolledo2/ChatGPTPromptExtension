@@ -53,7 +53,7 @@
         <Parent guid="guidChatGPTPromptPackageCmdSet1" id="MyMenuGroup" />
         <Icon guid="guidImages1" id="bmpPic1" />
         <Strings>
-          <ButtonText>Populate Prompt</ButtonText>
+          <ButtonText>Add to ChatGPT Prompt</ButtonText>
         </Strings>
       </Button>
 	  <Button guid="guidChatGPTPromptPackageCmdSet2" id="cmdidAddToRelevantClassesCommand" priority="0x0100" type="Button">

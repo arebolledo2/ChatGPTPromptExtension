@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ChatGPTPrompt.Templates
+﻿namespace ChatGPTPrompt.Templates
 {
-    public class ITemplate
+    public interface ITemplate
     {
+        string Prompt { get; }
+        string Name { get; }
     }
 }
