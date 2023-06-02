@@ -9,7 +9,7 @@ namespace ChatGPTPrompt.Parsing
 {
     internal class SelectedFileParser
     {
-        public List<string> ParseFiles(DTE2 dte, IEnumerable<string> filePaths)
+        public string ParseFiles(DTE2 dte, IEnumerable<string> filePaths)
         {
             ThreadHelper.ThrowIfNotOnUIThread();
             var fileContents = new List<string>();
@@ -34,7 +34,7 @@ namespace ChatGPTPrompt.Parsing
                 }
             }
 
-            return fileContents;
+            return string.Join("\n\n", fileContents);
         }
     }
 }

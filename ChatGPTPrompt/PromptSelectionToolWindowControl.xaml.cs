@@ -1,5 +1,6 @@
 ﻿using ChatGPTPrompt.Templates;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -29,7 +30,18 @@ namespace ChatGPTPrompt
             try
             {
                 IsEnabled = false;
-                var response = await new OpenAIQuery().GetOpenAIResponseAsync(txtPrompt.Text);
+
+                var items = relevantClassesListBox.Items.OfType<string>();
+
+                string relevant = string.Empty;
+                if (items.Any())
+                {
+                    // TODO
+                }
+
+                var prompt = new PromptFactory().Create(SelectedTemplate.Prompt, testClassTextBox.Text, relevant);
+
+                var response = await new OpenAIQuery().GetOpenAIResponseAsync(prompt);
                 resultTextBox.Text = response;
             }
             finally

@@ -58,6 +58,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ChatGPTPromptPackage.cs" />
     <Compile Include="Templates\ITemplate.cs" />
+    <Compile Include="Templates\PromptFactory.cs" />
     <Compile Include="Templates\UnitTestTemplate.cs" />
   </ItemGroup>
   <ItemGroup>
