@@ -46,7 +46,7 @@
         <Parent guid="guidSHLMainMenu" id="IDG_VS_WNDO_OTRWNDWS1" />
         <Icon guid="guidImages" id="bmpPic1" />
         <Strings>
-          <ButtonText>PromptSelectionToolWindow</ButtonText>
+          <ButtonText>ChatGPT Code Generator</ButtonText>
         </Strings>
       </Button>
       <Button guid="guidChatGPTPromptPackageCmdSet1" id="cmdidPopulateCodeToTestCommand" priority="0x0100" type="Button">

@@ -65,6 +65,13 @@ namespace ChatGPTPrompt
         {
             txtPrompt.Clear();
             txtRelated.Clear();
+            txtCode.Clear();
+            resultTextBox.Clear();
+        }
+
+        private void txtPrompt_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            SelectedTemplate.Prompt = txtPrompt.Text;
         }
     }
 }

@@ -39,7 +39,7 @@ public class OpenAIQuery
                 }
                 else
                 {
-                    throw new Exception($"Request failed with status code: {response.StatusCode}");
+                    return $"Request failed with status code: {response.StatusCode} - {response.ReasonPhrase}";
                 }
             }
         }

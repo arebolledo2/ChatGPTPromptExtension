@@ -2,7 +2,7 @@
 {
     public interface ITemplate
     {
-        string Prompt { get; }
+        string Prompt { get; set; }
         string Name { get; }
     }
 }
