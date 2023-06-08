@@ -116,7 +116,7 @@ namespace ChatGPTPrompt.Commands
             var control = (PromptSelectionToolWindowControl)window.Content;
             foreach (var path in paths)
             {
-                control.relevantClassesListBox.Items.Add(path);
+                ////control.relevantClassesListBox.Items.Add(path);
             }
         }
     }

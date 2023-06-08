@@ -27,53 +27,59 @@
         <converters:NullToBoolConverter x:Key="NullToBoolConverter" />
     </UserControl.Resources>
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" MinHeight="100" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" MinHeight="100"/>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" MinHeight="30"/>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" MinHeight="100"/>
-        </Grid.RowDefinitions>
-        
-        <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal">
-            <Label Content="Template:" />
-            <ComboBox x:Name="templateComboBox"
+    <ScrollViewer>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" MinHeight="100" MaxHeight="100" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" MinHeight="100" MaxHeight="200"/>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" MinHeight="30" MaxHeight="200"/>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" MinHeight="100" MaxHeight="150"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal">
+                <Label Content="Template:" />
+                <ComboBox x:Name="templateComboBox"
                       MinWidth="100"
                       ItemsSource="{Binding Templates}"
                       DisplayMemberPath="Name"
                       SelectedItem="{Binding SelectedTemplate, Mode=TwoWay}" SelectionChanged="templateComboBox_SelectionChanged"
                       IsSynchronizedWithCurrentItem="True">
-            </ComboBox>
-        </StackPanel>
+                </ComboBox>
+                <Button x:Name="btnReset" Click="btnReset_Click">Reset</Button>
+            </StackPanel>
 
-        <!-- Code to test area -->
-        <Label Content="Prompt:" Grid.Row="1" Grid.Column="0" />
-        <TextBox x:Name="txtPrompt" 
+            <!-- Code to test area -->
+            <Label Content="Prompt:" Grid.Row="1" Grid.Column="0" />
+            <TextBox x:Name="txtPrompt" 
                  Grid.Row="2" 
                  Grid.Column="0" 
                  AcceptsReturn="True" 
                  TextWrapping="Wrap" 
                  VerticalScrollBarVisibility="Auto" 
                  HorizontalScrollBarVisibility="Auto" />
-        <!-- Sample or existing test class area -->
-        <Label Content="Code:" Grid.Row="3" Grid.Column="0" />
-        <TextBox x:Name="testClassTextBox" Grid.Row="4" Grid.Column="0" AcceptsReturn="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" />
+            <!-- Sample or existing test class area -->
+            <Label Content="Code:" Grid.Row="3" Grid.Column="0" />
+            <TextBox x:Name="txtCode" Grid.Row="4" Grid.Column="0" AcceptsReturn="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" />
 
-        <!-- Relevant classes list -->
-        <Label Content="Related:" Grid.Row="5" Grid.Column="0" />
-        <ListBox x:Name="relevantClassesListBox" Grid.Row="6" Grid.Column="0" />
+            <Label Content="Related:" Grid.Row="5" Grid.Column="0" />
+            <TextBox x:Name="txtRelated" Grid.Row="6" Grid.Column="0" AcceptsReturn="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" />
 
-        <!-- Send request button -->
-        <Button x:Name="sendRequestButton" Content="Send Request" Grid.Row="7" Grid.Column="1" Click="sendRequestButton_Click" />
+            <!-- Relevant classes list -->
+            <!--<Label Content="Related:" Grid.Row="5" Grid.Column="0" />
+        <ListBox x:Name="txtRelated" Grid.Row="6" Grid.Column="0" />-->
 
-        <!-- Result display area -->
-        <Label Content="Result:" Grid.Row="8" Grid.Column="1" />
-        <TextBox x:Name="resultTextBox" Grid.Row="9" Grid.Column="1" Grid.RowSpan="5" AcceptsReturn="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" />
-    </Grid>
+            <!-- Send request button -->
+            <Button x:Name="sendRequestButton" Content="Send Request" Grid.Row="7" Grid.Column="1" Click="sendRequestButton_Click" />
+
+            <!-- Result display area -->
+            <Label Content="Result:" Grid.Row="8" Grid.Column="1" />
+            <TextBox x:Name="resultTextBox" Grid.Row="9" Grid.Column="1" Grid.RowSpan="5" AcceptsReturn="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" />
+        </Grid>
+    </ScrollViewer>
 </UserControl>

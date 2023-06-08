@@ -10,7 +10,7 @@ namespace ChatGPTPrompt.Commands
     /// <summary>
     /// Command handler
     /// </summary>
-    internal sealed class PopulateCodeToTestCommand
+    internal sealed class AddToRelatedCommand
     {
         /// <summary>
         /// Command ID.
@@ -20,7 +20,7 @@ namespace ChatGPTPrompt.Commands
         /// <summary>
         /// Command menu group (command set GUID).
         /// </summary>
-        public static readonly Guid CommandSet = new Guid("e4d82029-ec8e-4f62-84b0-ef59fe7501ab");
+        public static readonly Guid CommandSet = new Guid("352775c3-e796-4a1a-a6a0-227058e478a6");
 
         /// <summary>
         /// VS Package that provides this command, not null.
@@ -28,12 +28,12 @@ namespace ChatGPTPrompt.Commands
         private readonly AsyncPackage package;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="PopulateCodeToTestCommand"/> class.
+        /// Initializes a new instance of the <see cref="AddToRelatedCommand"/> class.
         /// Adds our command handlers for menu (commands must exist in the command table file)
         /// </summary>
         /// <param name="package">Owner package, not null.</param>
         /// <param name="commandService">Command service to add command to, not null.</param>
-        private PopulateCodeToTestCommand(AsyncPackage package, OleMenuCommandService commandService)
+        private AddToRelatedCommand(AsyncPackage package, OleMenuCommandService commandService)
         {
             this.package = package ?? throw new ArgumentNullException(nameof(package));
             commandService = commandService ?? throw new ArgumentNullException(nameof(commandService));
@@ -46,7 +46,7 @@ namespace ChatGPTPrompt.Commands
         /// <summary>
         /// Gets the instance of the command.
         /// </summary>
-        public static PopulateCodeToTestCommand Instance
+        public static AddToRelatedCommand Instance
         {
             get;
             private set;
@@ -69,12 +69,12 @@ namespace ChatGPTPrompt.Commands
         /// <param name="package">Owner package, not null.</param>
         public static async Task InitializeAsync(AsyncPackage package)
         {
-            // Switch to the main thread - the call to AddCommand in PopulateCodeToTestCommand's constructor requires
+            // Switch to the main thread - the call to AddCommand in AddToRelatedCommand's constructor requires
             // the UI thread.
             await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync(package.DisposalToken);
 
             OleMenuCommandService commandService = await package.GetServiceAsync(typeof(IMenuCommandService)) as OleMenuCommandService;
-            Instance = new PopulateCodeToTestCommand(package, commandService);
+            Instance = new AddToRelatedCommand(package, commandService);
         }
 
         /// <summary>
@@ -109,7 +109,7 @@ namespace ChatGPTPrompt.Commands
             if (window?.Content is PromptSelectionToolWindowControl control)
             {
                 // If it was, set the text of the codeToTestTextBox.
-                control.txtCode.Text += selectedText.Text + "\n\n";
+                control.txtRelated.Text += selectedText.Text + "\n\n";
             }
         }
     }

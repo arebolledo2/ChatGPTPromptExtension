@@ -1,6 +1,5 @@
 ﻿using ChatGPTPrompt.Templates;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -18,7 +17,7 @@ namespace ChatGPTPrompt
         {
             this.InitializeComponent();
             this.DataContext = this; // If the properties are in code-behind
-            Templates.Add(null);
+            Templates.Add(new DefaultTemplate());
             Templates.Add(new UnitTestTemplate());
         }
 
@@ -31,15 +30,15 @@ namespace ChatGPTPrompt
             {
                 IsEnabled = false;
 
-                var items = relevantClassesListBox.Items.OfType<string>();
+                ////var items = relevantClassesListBox.Items.OfType<string>();
 
-                string relevant = string.Empty;
-                if (items.Any())
-                {
-                    // TODO
-                }
+                ////string relevant = string.Empty;
+                ////if (items.Any())
+                ////{
+                ////    // TODO
+                ////}
 
-                var prompt = new PromptFactory().Create(SelectedTemplate.Prompt, testClassTextBox.Text, relevant);
+                var prompt = new PromptFactory().Create(SelectedTemplate.Prompt, txtCode.Text, txtRelated.Text);
 
                 var response = await new OpenAIQuery().GetOpenAIResponseAsync(prompt);
                 resultTextBox.Text = response;
@@ -54,14 +53,18 @@ namespace ChatGPTPrompt
         {
             if (SelectedTemplate == null)
             {
-                txtPrompt.IsEnabled = true;
                 txtPrompt.Text = string.Empty;
             }
             else
             {
-                txtPrompt.IsEnabled = false;
                 txtPrompt.Text = SelectedTemplate.Prompt;
             }
+        }
+
+        private void btnReset_Click(object sender, RoutedEventArgs e)
+        {
+            txtPrompt.Clear();
+            txtRelated.Clear();
         }
     }
 }

@@ -53,7 +53,7 @@
         <Parent guid="guidChatGPTPromptPackageCmdSet1" id="MyMenuGroup" />
         <Icon guid="guidImages1" id="bmpPic1" />
         <Strings>
-          <ButtonText>Add to ChatGPT Prompt</ButtonText>
+          <ButtonText>Add to Code</ButtonText>
         </Strings>
       </Button>
 	  <Button guid="guidChatGPTPromptPackageCmdSet2" id="cmdidAddToRelevantClassesCommand" priority="0x0100" type="Button">
@@ -61,6 +61,13 @@
         <Icon guid="guidImages2" id="bmpPic1" />
         <Strings>
           <ButtonText>Add to Relevant Classes</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidChatGPTPromptPackageCmdSet3" id="cmdidAddToRelatedCommand" priority="0x0100" type="Button">
+        <Parent guid="guidChatGPTPromptPackageCmdSet3" id="MyMenuGroup" />
+        <Icon guid="guidImages3" id="bmpPic1" />
+        <Strings>
+          <ButtonText>Add to Related</ButtonText>
         </Strings>
       </Button>
     </Buttons>
@@ -75,6 +82,7 @@
       <Bitmap guid="guidImages" href="Resources\PromptSelectionToolWindowCommand.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough" />
       <Bitmap guid="guidImages1" href="Commands\Resources\PopulateCodeToTestCommand.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough" />
       <Bitmap guid="guidImages2" href="Commands\Resources\AddToRelevantClassesCommand.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough" />
+      <Bitmap guid="guidImages3" href="Commands\Resources\AddToRelatedCommand.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough" />
     </Bitmaps>
     <Groups>
       <Group guid="guidChatGPTPromptPackageCmdSet1" id="MyMenuGroup" priority="0x0600">
@@ -82,6 +90,9 @@
       </Group>
       <Group guid="guidChatGPTPromptPackageCmdSet2" id="MyMenuGroup" priority="0x0600">
         <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_ITEMNODE" />
+      </Group>
+      <Group guid="guidChatGPTPromptPackageCmdSet3" id="MyMenuGroup" priority="0x0600">
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_CODEWIN" />
       </Group>
     </Groups>
   </Commands>
@@ -124,6 +135,20 @@
     </GuidSymbol>
   
     <GuidSymbol value="{43fe05ee-65fa-415d-ac61-db6f96dd9fbd}" name="guidImages2">
+      <IDSymbol name="bmpPic1" value="1" />
+      <IDSymbol name="bmpPic2" value="2" />
+      <IDSymbol name="bmpPicSearch" value="3" />
+      <IDSymbol name="bmpPicX" value="4" />
+      <IDSymbol name="bmpPicArrows" value="5" />
+      <IDSymbol name="bmpPicStrikethrough" value="6" />
+    </GuidSymbol>
+  
+    <GuidSymbol value="{352775c3-e796-4a1a-a6a0-227058e478a6}" name="guidChatGPTPromptPackageCmdSet3">
+      <IDSymbol value="4128" name="MyMenuGroup" />
+      <IDSymbol value="256" name="cmdidAddToRelatedCommand" />
+    </GuidSymbol>
+  
+    <GuidSymbol value="{cf00863d-27ab-4485-a2de-1ae3befdc364}" name="guidImages3">
       <IDSymbol name="bmpPic1" value="1" />
       <IDSymbol name="bmpPic2" value="2" />
       <IDSymbol name="bmpPicSearch" value="3" />

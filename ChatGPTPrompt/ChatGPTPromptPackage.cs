@@ -51,6 +51,7 @@ namespace ChatGPTPrompt
             await PromptSelectionToolWindowCommand.InitializeAsync(this);
             await ChatGPTPrompt.Commands.PopulateCodeToTestCommand.InitializeAsync(this);
             await ChatGPTPrompt.Commands.AddToRelevantClassesCommand.InitializeAsync(this);
+            await ChatGPTPrompt.Commands.AddToRelatedCommand.InitializeAsync(this);
         }
 
         #endregion
