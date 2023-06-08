@@ -19,6 +19,7 @@ namespace ChatGPTPrompt
             this.DataContext = this; // If the properties are in code-behind
             Templates.Add(new DefaultTemplate());
             Templates.Add(new UnitTestTemplate());
+            Templates.Add(new WriteCodeTemplate());
         }
 
         public ObservableCollection<ITemplate> Templates { get; } = new ObservableCollection<ITemplate>();

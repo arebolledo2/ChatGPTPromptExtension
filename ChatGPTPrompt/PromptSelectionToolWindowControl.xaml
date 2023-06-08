@@ -66,7 +66,7 @@
                  HorizontalScrollBarVisibility="Auto" 
                  TextChanged="txtPrompt_TextChanged"/>
             <!-- Sample or existing test class area -->
-            <Label Content="Code:" Grid.Row="3" Grid.Column="0" />
+            <Label Content="Code or Description:" Grid.Row="3" Grid.Column="0" />
             <avalonEdit:TextEditor x:Name="txtCode"
                 SyntaxHighlighting="C#"
                 FontFamily="Consolas"
